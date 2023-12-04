@@ -1,8 +1,10 @@
-var express = require("express");
-var app = express();
-var fs = require("fs");
-var bodyParser = require("body-parser");
+const { MongoClient } = require("mongodb");
+const express = require("express");
+const app = express();
+const bodyParser = require("body-parser");
+
 app.use(bodyParser.json());
+
 const port = "19999";
 const host = "localhost";
 
@@ -21,26 +23,39 @@ app.use((req, res, next) => {
   next();
 });
 
+const url = "mongodb://127.0.0.1:27017";
+const dbName = "Namaste-Nepali-Grocery";
+const client = new MongoClient(url, { useUnifiedTopology: true });
+let db;
+
+client
+  .connect()
+  .then(() => {
+    console.log("Node connected successfully to MongoDB");
+    db = client.db(dbName);
+  })
+  .catch((error) => {
+    console.error("Error connecting to MongoDB:", error);
+  });
+
 app.listen(port, () => {
   console.log("App listening at http://%s:%s", host, port);
 });
 
-const { MongoClient } = require("mongodb");
-const url = "mongodb://127.0.0.1:27017/Namaste-Nepali-Grocery";
-const dbName = "reactdata";
-const client = new MongoClient(url);
-const db = client.db(dbName);
-
 app.get("/api/products", async (req, res) => {
-  await client.connect();
-  console.log("Node connected successfully to GET MongoDB");
-  const query = {};
-  const results = await db
-    .collection("robots")
-    .find(query)
-    .limit(100)
-    .toArray();
-  console.log(results);
-  res.status(200);
-  res.send(results);
+  try {
+    const query = {};
+    const results = await db
+      .collection("Products") // Adjust based on your actual collection name
+      .find(query)
+      .limit(100)
+      .toArray();
+
+    console.log(results);
+
+    res.status(200).json({ success: true, products: results });
+  } catch (error) {
+    console.error("Error fetching products:", error);
+    res.status(500).json({ success: false, error: "Internal Server Error" });
+  }
 });
