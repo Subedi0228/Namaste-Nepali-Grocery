@@ -1,47 +1,46 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
+import Card from "react-bootstrap/Card";
+import "../App.css";
 
 const GroceryList = () => {
   const [groceryItems, setGroceryItems] = useState([]);
 
   const getMethod = () => {
-    fetch("http://localhost:19999/api/products")
+    fetch("http://localhost:8081/")
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
-        setGroceryItems(data.products || []); // Use an empty array if data.products is undefined
+        setGroceryItems(data);
       })
       .catch((error) => {
         console.error("Error fetching data:", error);
       });
   };
 
-  useEffect(() => {
-    getMethod();
-  }, []);
-
-  const loadGroceryItems = () => {
-    return groceryItems.map((item) => (
-      <div key={item.Name}>
-        <h3>{item.Name}</h3>
-        {item.Price !== undefined && <p>Price: ${item.Price.toFixed(2)}</p>}
-        <p>{item.Description}</p>
-        <img
-          src={item.Image}
-          alt={item.Name}
-          style={{ width: "200px", height: "200px" }}
-        />
-        <br />
-        <br />
-      </div>
-    ));
-  };
-
   return (
-    <div>
-      <h1>Nepali Grocery Store</h1>
-      <button onClick={getMethod}>Fetch Grocery Items</button>
-      <h1>Output:</h1>
-      <div>{loadGroceryItems()}</div>
+    <div id="groceryList">
+      <div className="invButton" onClick={getMethod}>
+        View Inventory
+      </div>
+      <div className="grocery-list">
+        {groceryItems.map((item) => (
+          <Card key={item.Name} className="grocery-card">
+            <Card.Img
+              className="cardImg"
+              variant="top"
+              src={item.Image}
+              alt={item.Name}
+            />
+            <Card.Body>
+              <Card.Title>{item.Name}</Card.Title>
+              {item.Price !== undefined && (
+                <Card.Text>Price: ${item.Price.toFixed(2)}</Card.Text>
+              )}
+              <Card.Text>{item.Description}</Card.Text>
+            </Card.Body>
+          </Card>
+        ))}
+      </div>
     </div>
   );
 };

@@ -1,0 +1,41 @@
+
+┌── Namaste-Nepali-Grocery
+│   ├── README.md
+│   ├── backend
+│   │   ├── dataSchema.js
+│   │   ├── images
+│   │   │   ├── image1.jpg
+│   │   │   ├── .
+│   │   │   ├── .
+│   │   │   ├── .
+│   │   │   ├── image20.jpg
+│   │   ├── package-lock.json
+│   │   ├── package.json
+│   │   └── server.js
+│   ├── frontend
+│   │   └── nepali-store
+│   │       ├── README.md
+│   │       ├── package-lock.json
+│   │       ├── package.json
+│   │       ├── public
+│   │       │   ├── favicon.ico
+│   │       │   ├── images
+│   │       │   │   ├── Namaste.png
+│   │       │   │   ├── storeImg1.jpg
+│   │       │   │   ├── storeImg2.jpg
+│   │       │   │   └── storeImg3.jpg
+│   │       │   ├── index.html
+│   │       │   └── manifest.json
+│   │       └── src
+│   │           ├── App.css
+│   │           ├── App.js
+│   │           ├── components
+│   │           │   ├── Footer.js
+│   │           │   ├── Grocerylist.js
+│   │           │   ├── Home.js
+│   │           │   ├── Inventory.js
+│   │           │   ├── MyCarousel.js
+│   │           │   └── header.jsx
+│   │           └── index.js
+│   ├── package-lock.json
+│   └── projectTree.txt

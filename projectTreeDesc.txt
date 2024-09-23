@@ -1,0 +1,41 @@
+### Project: Namaste-Nepali-Grocery
+
+This is the main directory for the "Namaste Nepali Grocery" project.
+
+#### Backend:
+- dataSchema.js: A JavaScript file likely containing data schema definitions.
+- images: A directory containing image files.
+  - image1.jpg to image20.jpg: A series of image files.
+
+- package.json: The npm package file, specifying project metadata and dependencies.
+- server.js: The JavaScript file for the server-side code.
+
+#### Frontend:
+- nepali-store: A directory for the frontend code related to the Nepali store.
+
+  ##### Nepali Store Frontend:
+  - README.md: Documentation for the frontend of the Nepali store.
+  - package.json: Package file for the frontend.
+  - public: Directory containing publicly accessible files.
+    - images: Directory for static image files.
+      - Namaste.png: The logo png file.
+      - storeImg1.jpg to storeImg3.jpg: A series of store image files for the carousel.
+    - index.html: The main HTML file for the frontend.
+
+  - src: Source code directory for the frontend.
+    - App.css: Cascading Style Sheets file for the main application.
+    - App.js: JavaScript file for the main application.
+    - components: Directory for React components.
+      - Footer.js: React component for the footer.
+      - Grocerylist.js: React component for the grocery list.
+      - Home.js: React component for the home page.
+      - Inventory.js: React component for inventory.
+      - MyCarousel.js: React component for a carousel.
+      - header.jsx: React component for the header.
+    - index.js: JavaScript file for the main entry point of the frontend.
+
+#### Additional Files:
+- package-lock.json: Lock file at the root level, potentially for additional dependencies.
+- projectTree.txt: A text file containing the tree structure of the project.
+
+The project seems to have a backend component, a frontend component for a Nepali store, and various image assets. The directory structure follows a common convention for Node.js projects with separate backend and frontend folders. React.js is likely used for the frontend based on the presence of `src` and React component files.
